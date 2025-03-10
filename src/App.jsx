@@ -8,6 +8,8 @@
 import React from 'react'
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import MainNavigator from './navigation/MainNavigator'
+import { NotifierWrapper } from 'react-native-notifier'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 const myTheme = {
   ...DefaultTheme,
@@ -19,9 +21,13 @@ const myTheme = {
 
 function App () {
   return (
-    <NavigationContainer theme={myTheme}>
-      <MainNavigator />
-    </NavigationContainer>
+    <GestureHandlerRootView>
+      <NotifierWrapper>
+        <NavigationContainer theme={myTheme}>
+          <MainNavigator />
+        </NavigationContainer>
+      </NotifierWrapper>
+    </GestureHandlerRootView>
   )
 }
 
