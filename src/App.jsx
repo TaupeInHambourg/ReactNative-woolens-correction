@@ -6,12 +6,20 @@
  */
 
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import MainNavigator from './navigation/MainNavigator'
+
+const myTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#222222'
+  }
+}
 
 function App () {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={myTheme}>
       <MainNavigator />
     </NavigationContainer>
   )
