@@ -1,6 +1,7 @@
 import Icon from '@react-native-vector-icons/material-design-icons'
 import { useState } from 'react'
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { removeBackgroundFromImage } from '../adapters/photoroomAdapter'
 
 function PhotoEditScreen ({ route, navigation }) {
   const { photo } = route.params
@@ -8,7 +9,8 @@ function PhotoEditScreen ({ route, navigation }) {
   const [image, setImage] = useState('file://' + photo.path)
 
   const handleRemoveBackground = async () => {
-    console.log('Remove background')
+    const result = await removeBackgroundFromImage(photo.path)
+    console.log(result)
   }
 
   return photo && (
