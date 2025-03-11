@@ -7,6 +7,7 @@ function ProductsList ({ products, onDelete, onRefresh }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState()
   const [refreshing, setRefreshing] = useState(false)
+
   const onRefreshList = useCallback(async () => {
     setRefreshing(true)
     await onRefresh()
@@ -45,7 +46,8 @@ function ProductsList ({ products, onDelete, onRefresh }) {
   return (
     <>
       <FlatList
-        initialNumToRender={20}
+        initialNumToRender={30}
+        keyExtractor={(item) => item.id}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefreshList} />
         }
