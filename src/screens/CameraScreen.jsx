@@ -1,10 +1,8 @@
-import { Text, View } from 'react-native'
+import CameraComponent from '../components/camera/CameraComponent'
 
-function CameraScreen () {
+function CameraScreen ({ navigation }) {
   return (
-    <View>
-      <Text>Camera Screen</Text>
-    </View>
+    <CameraComponent navigation={navigation} />
   )
 }
 
