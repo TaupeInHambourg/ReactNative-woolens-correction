@@ -8,7 +8,14 @@ function ProductsNavigator () {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Products' component={ProductsScreen} />
-      <Stack.Screen name='AddProduct' component={AddProductScreen} />
+      <Stack.Screen
+        name='AddProduct'
+        component={AddProductScreen}
+        options={{
+          title: 'Ajouter un produit',
+          animation: 'fade_from_bottom'
+        }}
+      />
     </Stack.Navigator>
   )
 }

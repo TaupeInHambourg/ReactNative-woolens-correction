@@ -1,25 +1,18 @@
-import { useState } from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import AddProductForm from '../components/form/AddProductForm'
 
 function AddProductScreen () {
-  const [name, setName] = useState('')
-  console.log(name)
   return (
-    <View>
-      <TextInput
-        value={name}
-        onChangeText={setName}
-        style={styles.input}
-        placeholder='Nom du produit'
-      />
+    <View style={styles.container}>
+      <AddProductForm />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  input: {
-    borderWidth: 1,
-    borderColor: '#222'
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start'
   }
 })
 
