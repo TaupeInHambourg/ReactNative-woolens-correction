@@ -37,7 +37,7 @@ const addProduct = async (product) => {
     const data = {
       name: product.name,
       short_description: product.short_description,
-      price: parseFloat(product.price)
+      regular_price: product.price
     }
     const response = await api.post('/products', data)
     Notifier.showNotification({
