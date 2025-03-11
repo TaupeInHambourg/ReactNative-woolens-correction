@@ -1,24 +1,18 @@
-import { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { getAllProducts } from '../services/wc-api'
 import ProductsList from '../components/products/ProductsList'
 import Fab from '../components/Fab'
+import useProducts from '../hooks/useProducts'
+import DataLoader from '../components/loader/DataLoader'
 
 function ProductsScreen ({ navigation }) {
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getAllProducts()
-      if (data) {
-        setProducts(data)
-      }
-    }
-    getData()
-  }, [])
+  const { products, isLoading } = useProducts()
 
   const handlePress = () => {
     navigation.navigate('AddProduct')
+  }
+
+  if (isLoading) {
+    return <DataLoader />
   }
 
   return (
