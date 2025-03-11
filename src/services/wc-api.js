@@ -17,7 +17,7 @@ const api = axios.create({
 
 const getAllProducts = async () => {
   try {
-    const response = await api.get('/products')
+    const response = await api.get('/products?per_page=30')
     return response.data
   } catch (error) {
     console.error(error)
@@ -34,8 +34,12 @@ const getAllProducts = async () => {
 
 const addProduct = async (product) => {
   try {
-    console.log(product)
-    const response = await api.post('/products', product)
+    const data = {
+      name: product.name,
+      short_description: product.short_description,
+      price: parseFloat(product.price)
+    }
+    const response = await api.post('/products', data)
     Notifier.showNotification({
       title: 'Le produit a bien été ajouté',
       Component: NotifierComponents.Alert,
@@ -57,7 +61,32 @@ const addProduct = async (product) => {
   }
 }
 
+const deleteProduct = async (productId) => {
+  try {
+    const response = await api.delete(`/products/${productId}`)
+    Notifier.showNotification({
+      title: 'Le produit a bien été supprimé',
+      Component: NotifierComponents.Alert,
+      componentProps: {
+        alertType: 'success'
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error(error)
+    Notifier.showNotification({
+      title: 'Le produit n\'a pas été supprimé',
+      description: `Une erreur s'est produite \n${error}`,
+      Component: NotifierComponents.Alert,
+      componentProps: {
+        alertType: 'error'
+      }
+    })
+  }
+}
+
 export {
   getAllProducts,
-  addProduct
+  addProduct,
+  deleteProduct
 }

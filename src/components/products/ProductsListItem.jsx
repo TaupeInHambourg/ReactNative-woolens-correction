@@ -1,10 +1,9 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { productsListItemStyle as styles } from './ProductsListStyle'
 
-function ProductsListItem ({ product }) {
-  console.log(product)
+function ProductsListItem ({ product, onLongPress }) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onLongPress={() => onLongPress(product)}>
       <Image
         src={product?.images[0]?.src}
         width={100}

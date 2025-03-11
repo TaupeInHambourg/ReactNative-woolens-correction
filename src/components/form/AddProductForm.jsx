@@ -5,9 +5,9 @@ import { productValidator } from '../../utils/validators/validators'
 
 function AddProductForm ({ onSubmit }) {
   const [product, setProduct] = useState({
-    name: 'Test',
-    short_description: 'kuyfgezfkzgfyezguyzgfyzegfezgfyezgfzfugfgfsegfeUGFGFEgefsygfeugefyugfuygfgfezygfeziugfyguygfzeugYGFIUGES',
-    price: 35
+    name: '',
+    short_description: '',
+    price: ''
   })
   const [errors, setErrors] = useState(null)
 

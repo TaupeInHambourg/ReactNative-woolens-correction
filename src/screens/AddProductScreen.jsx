@@ -1,10 +1,12 @@
 import { StyleSheet, View } from 'react-native'
 import AddProductForm from '../components/form/AddProductForm'
-import { addProduct } from '../services/wc-api'
+import useProducts from '../hooks/useProducts'
 
 function AddProductScreen ({ navigation }) {
+  const { addProduct } = useProducts()
+
   const handleSubmit = async (product) => {
-    const result = await addProduct(product)
+    await addProduct(product)
     navigation.goBack()
   }
   return (
