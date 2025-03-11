@@ -32,6 +32,32 @@ const getAllProducts = async () => {
   }
 }
 
+const addProduct = async (product) => {
+  try {
+    console.log(product)
+    const response = await api.post('/products', product)
+    Notifier.showNotification({
+      title: 'Le produit a bien été ajouté',
+      Component: NotifierComponents.Alert,
+      componentProps: {
+        alertType: 'success'
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error(error)
+    Notifier.showNotification({
+      title: 'Le produit n\'a pas été ajouté',
+      description: `Une erreur s'est produite \n${error}`,
+      Component: NotifierComponents.Alert,
+      componentProps: {
+        alertType: 'error'
+      }
+    })
+  }
+}
+
 export {
-  getAllProducts
+  getAllProducts,
+  addProduct
 }

@@ -1,9 +1,10 @@
 import { StyleSheet, View } from 'react-native'
 import AddProductForm from '../components/form/AddProductForm'
+import { addProduct } from '../services/wc-api'
 
 function AddProductScreen () {
-  const handleSubmit = () => {
-
+  const handleSubmit = async (product) => {
+    const result = await addProduct(product)
   }
   return (
     <View style={styles.container}>

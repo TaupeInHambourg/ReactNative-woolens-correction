@@ -5,9 +5,9 @@ import { productValidator } from '../../utils/validators/validators'
 
 function AddProductForm ({ onSubmit }) {
   const [product, setProduct] = useState({
-    name: '',
-    short_description: '',
-    price: 0
+    name: 'Test',
+    short_description: 'kuyfgezfkzgfyezguyzgfyzegfezgfyezgfzfugfgfsegfeUGFGFEgefsygfeugefyugfuygfgfezygfeziugfyguygfzeugYGFIUGES',
+    price: 35
   })
   const [errors, setErrors] = useState(null)
 
@@ -35,21 +35,21 @@ function AddProductForm ({ onSubmit }) {
     <View style={styles.container}>
       <TextInput
         value={product.name}
-        onChange={(text) => handleChange('name', text)}
+        onChangeText={(text) => handleChange('name', text)}
         placeholder='Nom du produit'
         error={errors?.name}
       />
       <TextInput
         keyboardType='number-pad'
-        value={product.price}
-        onChange={(text) => handleChange('price', text)}
+        value={product.price.toString()}
+        onChangeText={(text) => handleChange('price', text)}
         placeholder='Prix'
         error={errors?.price}
       />
       <TextInput
         textarea
         value={product.short_description}
-        onChange={(text) => handleChange('short_description', text)}
+        onChangeText={(text) => handleChange('short_description', text)}
         placeholder='Description courte'
         error={errors?.short_description}
       />
