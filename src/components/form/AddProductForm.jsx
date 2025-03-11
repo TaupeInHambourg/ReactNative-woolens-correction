@@ -13,7 +13,7 @@ function AddProductForm ({ onSubmit }) {
 
   const handlePress = () => {
     const errors = productValidator(product)
-    if (!errors) {
+    if (!errors.name && !errors.price && !errors.short_description) {
       onSubmit(product)
     } else {
       setErrors(errors)
