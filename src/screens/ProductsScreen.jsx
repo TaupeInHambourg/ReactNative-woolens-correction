@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { getAllProducts } from '../services/wc-api'
 import ProductsList from '../components/products/ProductsList'
+import Fab from '../components/Fab'
 
-function ProductsScreen () {
+function ProductsScreen ({ navigation }) {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -16,9 +17,14 @@ function ProductsScreen () {
     getData()
   }, [])
 
+  const handlePress = () => {
+    navigation.navigate('AddProduct')
+  }
+
   return (
     <View>
       <ProductsList products={products} />
+      <Fab onPress={handlePress} />
     </View>
   )
 }
