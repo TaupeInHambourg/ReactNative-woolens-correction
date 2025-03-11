@@ -10,6 +10,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import MainNavigator from './navigation/MainNavigator'
 import { NotifierWrapper } from 'react-native-notifier'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import BootSplash from 'react-native-bootsplash'
 
 const myTheme = {
   ...DefaultTheme,
@@ -23,7 +24,12 @@ function App () {
   return (
     <GestureHandlerRootView>
       <NotifierWrapper>
-        <NavigationContainer theme={myTheme}>
+        <NavigationContainer
+          theme={myTheme}
+          onReady={() => {
+            BootSplash.hide({ fade: true })
+          }}
+        >
           <MainNavigator />
         </NavigationContainer>
       </NotifierWrapper>
