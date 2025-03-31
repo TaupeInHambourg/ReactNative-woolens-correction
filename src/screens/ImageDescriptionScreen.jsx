@@ -1,24 +1,30 @@
-import Icon from '@react-native-vector-icons/material-design-icons'
-import { useState } from 'react'
 import { ActivityIndicator, Image, StyleSheet, TouchableOpacity, View } from 'react-native'
-import { removeBackgroundFromImage } from '../adapters/photoroomAdapter'
+import Icon from '@react-native-vector-icons/material-design-icons'
+import { describeImage } from '../adapters/geminiAdapter'
+import { useState } from 'react'
 
-function PhotoEditScreen ({ route, navigation }) {
+function ImageDescriptionScreen ({ route, navigation }) {
   const { photo } = route.params
   const [loading, setLoading] = useState(false)
 
-  const handleRemoveBackground = async () => {
+  const handleDescribeImage = async () => {
     setLoading(true)
-    const result = await removeBackgroundFromImage(photo.path)
-    console.log('REMOVE BG RESULT', result)
+    const result = await describeImage(photo)
+    console.log('DESCRIBE RESULT', result)
     setLoading(false)
-    navigation.navigate('ImageDescription', { photo: result })
+    navigation.navigate('Products', {
+      screen: 'AddProduct',
+      params: {
+        product: result,
+        photo
+      }
+    })
   }
 
-  return photo && (
+  return (
     <View style={styles.container}>
       <Image
-        source={{ uri: 'file://' + photo.path }}
+        source={{ uri: photo }}
         width='100%'
         height='100%'
       />
@@ -28,13 +34,13 @@ function PhotoEditScreen ({ route, navigation }) {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={handleRemoveBackground}
+          onPress={handleDescribeImage}
           disabled={loading}
         >
           {
             loading
               ? <ActivityIndicator size={40} color='black' />
-              : <Icon name='checkerboard-remove' size={40} />
+              : <Icon name='image-search-outline' size={40} />
           }
         </TouchableOpacity>
       </View>
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
     borderRadius: 50,
-    padding: 10
+    padding: 20
   },
   backButton: {
     position: 'absolute',
@@ -71,4 +77,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PhotoEditScreen
+export default ImageDescriptionScreen
