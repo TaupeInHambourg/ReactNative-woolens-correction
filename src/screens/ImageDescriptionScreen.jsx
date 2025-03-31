@@ -1,23 +1,29 @@
-import Icon from '@react-native-vector-icons/material-design-icons'
-import { useState } from 'react'
 import { ActivityIndicator, Image, StyleSheet, TouchableOpacity, View } from 'react-native'
-import { removeBackgroundFromImage } from '../adapters/photoroomAdapter'
+import Icon from '@react-native-vector-icons/material-design-icons'
+import { describeImage } from '../adapters/geminiAdapter'
+import { useState } from 'react'
 
-function PhotoEditScreen ({ route, navigation }) {
+function ImageDescriptionScreen ({ route, navigation }) {
   const [loading, setLoading] = useState(false)
-  const { photo } = route.params
+  const { image } = route.params
 
-  const handleRemoveBackground = async () => {
+  const handleDescribeImage = async () => {
     setLoading(true)
-    const result = await removeBackgroundFromImage(photo.path)
+    const result = await describeImage(image)
     setLoading(false)
-    navigation.navigate('ImageDescription', { image: result })
+    navigation.navigate('Products', {
+      screen: 'AddProduct',
+      params: {
+        product: result,
+        image
+      }
+    })
   }
 
-  return photo && (
+  return (
     <View style={styles.container}>
       <Image
-        source={{ uri: 'file://' + photo.path }}
+        source={{ uri: image }}
         width='100%'
         height='100%'
       />
@@ -27,13 +33,13 @@ function PhotoEditScreen ({ route, navigation }) {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={handleRemoveBackground}
+          onPress={handleDescribeImage}
           disabled={loading}
         >
           {
             loading
               ? <ActivityIndicator size={40} color='black' />
-              : <Icon name='checkerboard-remove' size={40} />
+              : <Icon name='image-search-outline' size={40} />
           }
         </TouchableOpacity>
       </View>
@@ -70,4 +76,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PhotoEditScreen
+export default ImageDescriptionScreen

@@ -3,10 +3,11 @@ import TextInput from './inputs/TextInput'
 import { useState } from 'react'
 import { productValidator } from '../../utils/validators/validators'
 
-function AddProductForm ({ onSubmit }) {
+function AddProductForm ({ onSubmit, initialValues }) {
   const [product, setProduct] = useState({
-    name: '',
-    short_description: '',
+    name: initialValues?.title || '',
+    short_description: initialValues?.description || '',
+    keywords: initialValues?.keywords || [],
     price: ''
   })
   const [errors, setErrors] = useState(null)

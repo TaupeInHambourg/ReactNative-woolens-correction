@@ -2,8 +2,17 @@ import { StyleSheet, View } from 'react-native'
 import AddProductForm from '../components/form/AddProductForm'
 import useProducts from '../hooks/useProducts'
 
-function AddProductScreen ({ navigation }) {
+function AddProductScreen ({ navigation, route }) {
   const { addProduct } = useProducts()
+
+  const { product, image } = route.params || {}
+
+  const initialValues = {
+    title: product?.title || '',
+    description: product?.description || '',
+    price: product?.price || 0,
+    image: image || null
+  }
 
   const handleSubmit = async (product) => {
     await addProduct(product)
@@ -12,6 +21,8 @@ function AddProductScreen ({ navigation }) {
   return (
     <View style={styles.container}>
       <AddProductForm
+        initialValues={initialValues}
+        onCancel={() => navigation.goBack()}
         onSubmit={handleSubmit}
       />
     </View>
