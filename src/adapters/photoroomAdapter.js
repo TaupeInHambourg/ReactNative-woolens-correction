@@ -13,7 +13,6 @@ const removeBackgroundFromImage = async (imageURI) => {
     })
     form.append('shadow.mode', 'ai.soft')
     form.append('background.color', 'FFFFFF')
-    form.append('padding', '0.1')
 
     const options = {
       method: 'POST',
