@@ -23,6 +23,7 @@
     "react-native": "0.77.1",
     "react-native-bootsplash": "^6.3.3",
     "react-native-config": "^1.5.5",
+    "react-native-element-textinput": "^2.2.0",
     "react-native-gesture-handler": "^2.24.0",
     "react-native-notifier": "^2.0.0",
     "react-native-safe-area-context": "^5.2.0",

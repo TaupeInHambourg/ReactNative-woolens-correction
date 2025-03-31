@@ -22,6 +22,10 @@ function ProductsScreen ({ navigation }) {
     await deleteProduct(product.id)
   }
 
+  const handleUpdate = async (product) => {
+    navigation.navigate('AddProduct', { product })
+  }
+
   if (isLoading) {
     return <DataLoader />
   }
@@ -31,6 +35,7 @@ function ProductsScreen ({ navigation }) {
       <ProductsList
         products={products}
         onDelete={handleDelete}
+        onUpdate={handleUpdate}
         onRefresh={refresh}
       />
       <Fab onPress={handlePress} />

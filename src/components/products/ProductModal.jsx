@@ -12,7 +12,8 @@ function ProductModal ({
   product,
   setModalVisible,
   modalVisible,
-  onDelete
+  onDelete,
+  onUpdate
 }) {
   return (
     <Modal
@@ -29,6 +30,7 @@ function ProductModal ({
           <Text style={styles.modalText}>{`Produit ${product?.name}`}</Text>
           <Button
             title='Editer le produit'
+            onPress={() => onUpdate(product)}
           />
           <Button
             color='red'

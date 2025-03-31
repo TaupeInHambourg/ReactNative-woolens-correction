@@ -16,8 +16,8 @@ const removeBackgroundFromImage = async (imageURI) => {
     form.append('padding', '20%')
     // form.append('outputSize', 'croppedSubject')
     form.append('export.format', 'jpeg')
-    form.append('maxWidth', '1000')
-    form.append('maxHeight', '1000')
+    form.append('maxWidth', '2000')
+    form.append('maxHeight', '2000')
 
     const options = {
       method: 'POST',
@@ -48,7 +48,7 @@ const removeBackgroundFromImage = async (imageURI) => {
 
     const base64 = arrayBufferToBase64(arrayBuffer)
     const dataUrl = `data:image/jpeg;base64,${base64}`
-    console.log('Image en base64:', dataUrl)
+    // console.log('Image en base64:', dataUrl)
     return dataUrl
   } catch (error) {
     console.error('Erreur lors de l\'appel API:', error)

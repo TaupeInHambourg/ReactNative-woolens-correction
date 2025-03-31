@@ -3,19 +3,20 @@ import AddProductForm from '../components/form/AddProductForm'
 import useProducts from '../hooks/useProducts'
 
 function AddProductScreen ({ navigation, route }) {
-  const { addProduct } = useProducts()
+  const { addProductWithImage } = useProducts()
 
   const { product, image } = route.params || {}
 
   const initialValues = {
-    title: product?.title || '',
-    description: product?.description || '',
+    title: product?.title || product?.name || '',
+    description: product?.description || product?.short_description || '',
     price: product?.price || 0,
-    image: image || null
+    keywords: product?.keywords || product?.tags?.map(t => t.name) || [],
+    image: image || product?.images[0]?.src || null
   }
 
   const handleSubmit = async (product) => {
-    await addProduct(product)
+    await addProductWithImage(product)
     navigation.goBack()
   }
   return (

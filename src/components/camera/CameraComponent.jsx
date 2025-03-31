@@ -13,7 +13,6 @@ function CameraComponent ({ navigation }) {
 
   const takePhoto = async () => {
     const photo = await camera.current.takePhoto()
-    console.log(photo)
     navigation.navigate('PhotoEdit', {
       photo
     })

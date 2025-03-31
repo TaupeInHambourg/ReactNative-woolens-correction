@@ -3,7 +3,7 @@ import { Alert, FlatList, RefreshControl, Text } from 'react-native'
 import ProductsListItem from './ProductsListItem'
 import ProductModal from './ProductModal'
 
-function ProductsList ({ products, onDelete, onRefresh }) {
+function ProductsList ({ products, onDelete, onUpdate, onRefresh }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState()
   const [refreshing, setRefreshing] = useState(false)
@@ -64,6 +64,7 @@ function ProductsList ({ products, onDelete, onRefresh }) {
       />
       <ProductModal
         onDelete={handleDelete}
+        onUpdate={onUpdate}
         product={selectedProduct}
         modalVisible={isModalOpen}
         setModalVisible={setIsModalOpen}

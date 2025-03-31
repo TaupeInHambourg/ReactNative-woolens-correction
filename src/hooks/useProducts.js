@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import {
   getAllProducts,
   deleteProduct as deleteProductApi,
-  addProduct as addProductApi
+  addProduct as addProductApi,
+  addProductWithImageApi
 } from '../services/wc-api'
 
 function useProducts () {
@@ -33,6 +34,13 @@ function useProducts () {
     setIsLoading(false)
   }
 
+  const addProductWithImage = async (product) => {
+    setIsLoading(true)
+    await addProductWithImageApi(product)
+    await getData()
+    setIsLoading(false)
+  }
+
   const refresh = async () => {
     const data = await getAllProducts()
     if (data) {
@@ -49,6 +57,7 @@ function useProducts () {
     refresh,
     deleteProduct,
     addProduct,
+    addProductWithImage,
     products
     // error
   }

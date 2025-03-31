@@ -47,7 +47,7 @@ const describeImage = async (base64Image) => {
     const generatedContent = await model.generateContent(parts)
     const result = generatedContent.response.text()
     const jsonResponse = JSON.parse(result)
-    console.log('Réponse de l\'API:', jsonResponse)
+    // console.log('Réponse de l\'API:', jsonResponse)
     return jsonResponse
   } catch (error) {
     console.error('Erreur lors de l\'appel API:', error)

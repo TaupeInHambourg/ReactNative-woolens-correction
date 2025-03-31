@@ -6122,6 +6122,13 @@ react-native-config@^1.5.5:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.5.5.tgz#5977db58ff20b6fe9dd6fb28c815a9ba43d018d2"
   integrity sha512-dGdLnBU0cd5xL5bF0ROTmHYbsstZnQKOEPfglvZi1vStvAjpld14X25K6mY3KGPTMWAzx6TbjKeq5dR+ILuMMA==
 
+react-native-element-textinput@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-element-textinput/-/react-native-element-textinput-2.2.0.tgz#b3a5448359e93492eaaa1fce86374ded241dba5c"
+  integrity sha512-fLq0F/Z98N/ISruiuyKiaeM1fQaNb/CLIAC9vQ16f1zFd1thsLBEXusUCFhTEs6KlVZ4BWOnVPMAZXFNr5zfDg==
+  dependencies:
+    react-native-virtualized-view "*"
+
 react-native-gesture-handler@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.24.0.tgz#b6e1f13ec9bf8dfa5f4911854b6e0d73d882a81a"
@@ -6153,6 +6160,11 @@ react-native-screens@^4.7.0:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-virtualized-view@*:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-virtualized-view/-/react-native-virtualized-view-1.0.0.tgz#fd2129f1309d1ff4b9e869d5050e803640ca64c5"
+  integrity sha512-7YyFMMkNzJ787/giGkKcm0JEx0IcLEE/XHREGz2I4K1RISQGFjEDe6iWsapOnHSR/e1vhebZJ8VmqhSpg5YPzg==
 
 react-native-vision-camera@^4.6.4:
   version "4.6.4"
