@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_KEY = 'YOUR_API_KEY'
+const API_KEY = 'sandbox_ab0964e7b6e82c9a11eb317ded4451d6fcc36229'
 
 const api = axios.create({
   baseURL: 'https://image-api.photoroom.com/v2',
