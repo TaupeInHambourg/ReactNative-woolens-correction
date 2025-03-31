@@ -38,6 +38,11 @@ function ProductsList ({ products, onDelete, onUpdate, onRefresh }) {
     )
   }
 
+  const handleUpdate = (product) => {
+    onUpdate(product)
+    setIsModalOpen(false)
+  }
+
   const handleLongPress = (product) => {
     setSelectedProduct(product)
     setIsModalOpen(true)
@@ -64,7 +69,7 @@ function ProductsList ({ products, onDelete, onUpdate, onRefresh }) {
       />
       <ProductModal
         onDelete={handleDelete}
-        onUpdate={onUpdate}
+        onUpdate={handleUpdate}
         product={selectedProduct}
         modalVisible={isModalOpen}
         setModalVisible={setIsModalOpen}
