@@ -1,6 +1,5 @@
 import { encode as base64Encode } from 'base-64'
-
-const API_KEY = 'sandbox_ab0964e7b6e82c9a11eb317ded4451d6fcc36229'
+import Config from 'react-native-config'
 
 const removeBackgroundFromImage = async (imageURI) => {
   try {
@@ -19,7 +18,7 @@ const removeBackgroundFromImage = async (imageURI) => {
     const options = {
       method: 'POST',
       headers: {
-        'x-api-key': API_KEY
+        'x-api-key': Config.PHOTOROOM_API_KEY
         // Laisse fetch gérer le Content-Type pour multipart/form-data
       },
       body: form
