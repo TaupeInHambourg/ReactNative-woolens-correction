@@ -11,6 +11,7 @@ function PhotoEditScreen ({ route, navigation }) {
   const handleRemoveBackground = async () => {
     const result = await removeBackgroundFromImage(photo.path)
     console.log(result)
+    setImage(result)
   }
 
   return photo && (
